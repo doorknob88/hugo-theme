@@ -1,0 +1,24 @@
+{{ define "main" }}
+  <div class="prose lg:prose-xl max-w-none">
+    <h1 class="text-4xl font-bold mb-6">{{ .Title }}</h1>
+    <div class="mb-8">
+      {{ .Content }}
+    </div>
+  </div>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {{ range .Pages }}
+      <div class="card bg-base-200 shadow-lg hover:shadow-xl transition-shadow">
+        <div class="card-body">
+          <h2 class="card-title">
+            <a href="{{ .RelPermalink }}" class="hover:text-primary">{{ .LinkTitle }}</a>
+          </h2>
+          <p>{{ .Summary }}</p>
+          <div class="card-actions justify-end">
+            <a href="{{ .RelPermalink }}" class="btn btn-primary btn-sm">Read more</a>
+          </div>
+        </div>
+      </div>
+    {{ end }}
+  </div>
+{{ end }}

@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .prose img {
+    @apply rounded-xl shadow-lg mx-auto;
+  }
+}
+
+/* Custom styles can be added below */

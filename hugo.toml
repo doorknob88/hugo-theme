@@ -1,0 +1,32 @@
+baseURL = 'https://parsel.email/blog'
+languageCode = 'en-US'
+title = 'Parsel Blog'
+
+# Theme settings
+[params]
+  # Enable dark mode toggle
+  darkMode = true
+  # Default theme (light, dark, or auto)
+  defaultTheme = "light"
+  # Main sections to show on homepage
+  mainSections = ["posts"]
+
+[[menus.main]]
+name = 'Home'
+pageRef = '/'
+weight = 10
+
+[[menus.main]]
+name = 'Posts'
+pageRef = '/posts'
+weight = 20
+
+[[menus.main]]
+name = 'Tags'
+pageRef = '/tags'
+weight = 30
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.116.0"

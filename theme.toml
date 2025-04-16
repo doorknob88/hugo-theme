@@ -1,0 +1,24 @@
+name = 'Parsel'
+license = 'MIT'
+licenselink = 'https://github.com/owner/repo/LICENSE'
+description = 'A modern Hugo theme with Tailwind CSS and daisyUI'
+
+# The home page of the theme, where the source can be found
+homepage = 'https://github.com/parsel-email/hugo-theme'
+
+# If you have a running demo of the theme
+demosite = 'https://parsel.email/blog'
+
+# Taxonomy terms
+tags = ['blog', 'responsive', 'tailwind', 'daisyui']
+features = ['responsive', 'tailwind css', 'daisyui', 'dark mode', 'mobile-friendly']
+
+# If the theme has a single author
+[author]
+  name = 'doorknob88'
+  homepage = 'parsel.email'
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.116.0"

@@ -1,0 +1,18 @@
+# Node.js dependencies
+node_modules/
+
+# Generated CSS file (since we're building it from Tailwind source)
+resources/_gen/
+
+# macOS files
+.DS_Store
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Hugo files
+.hugo_build.lock
+public/
