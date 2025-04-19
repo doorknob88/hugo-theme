@@ -1,27 +1,59 @@
 // Theme toggle functionality
 function setupThemeToggle() {
-  // Check for saved theme preference or use the default
-  const getStoredTheme = () => localStorage.getItem('theme') || 'light';
+  // Check for saved theme preference, user system preference, or use light as the default
+  const getStoredTheme = () => {
+    // Check localStorage first
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+      return storedTheme;
+    }
+    
+    // Check user system preference
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    
+    // Default to light mode
+    return 'light';
+  };
   
-  // Set theme on html element
+  // Set theme on html element and update the toggle
   const setTheme = (theme) => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
+    
+    // Update checkbox state to match theme
+    const themeToggle = document.querySelector('.theme-controller');
+    if (themeToggle) {
+      themeToggle.checked = (theme === 'dark');
+    }
   };
 
   // Initialize theme
-  setTheme(getStoredTheme());
-
-  // Theme toggle event handler
   document.addEventListener('DOMContentLoaded', () => {
+    // Set initial theme
+    const theme = getStoredTheme();
+    setTheme(theme);
+    
+    // Theme toggle event handler
     const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-      themeToggle.addEventListener('click', () => {
-        const currentTheme = getStoredTheme();
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    const themeCheckbox = document.querySelector('.theme-controller');
+    
+    if (themeToggle && themeCheckbox) {
+      // Listen for checkbox changes directly
+      themeCheckbox.addEventListener('change', () => {
+        const newTheme = themeCheckbox.checked ? 'dark' : 'light';
         setTheme(newTheme);
       });
     }
+    
+    // Listen for system preference changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      // Only change theme if user hasn't set a preference
+      if (!localStorage.getItem('theme')) {
+        setTheme(e.matches ? 'dark' : 'light');
+      }
+    });
   });
 }
 
