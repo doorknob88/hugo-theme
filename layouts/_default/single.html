@@ -8,7 +8,7 @@
         <div class="badge badge-outline">{{ .Date.Format "January 2, 2006" }}</div>
         {{ with .Params.tags }}
           {{ range . }}
-            <a href="{{ "tags/" | absURL }}{{ . | urlize }}" class="badge badge-primary">{{ . }}</a>
+            <a href="{{ "tags/" | absURL }}{{ . | urlize }}" class="badge badge-neutral">{{ . }}</a>
           {{ end }}
         {{ end }}
       </div>
