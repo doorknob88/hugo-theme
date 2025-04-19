@@ -8,12 +8,3 @@
   }
 }
 
-/* Custom styles can be added below */
-:root {
-  --rounded-btn: 0.125rem; /* Change from 0.5rem to a much smaller value for sharper corners */
-}
-
-/* Make sure the btn class has less rounded corners */
-.btn {
-  border-radius: var(--rounded-btn);
-}
