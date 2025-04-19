@@ -1,17 +1,24 @@
 {{ define "main" }}
-  <article class="prose lg:prose-xl max-w-none">
-    <h1 class="text-4xl font-bold mb-4">{{ .Title }}</h1>
-
-    {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-    {{ $dateHuman := .Date | time.Format ":date_long" }}
-    <time datetime="{{ $dateMachine }}" class="text-sm text-base-content/70 mb-6 block">{{ $dateHuman }}</time>
-
-    <div class="mt-8">
-      {{ .Content }}
+<article class="container mx-auto px-4 py-8">
+  <div class="card bg-base-100 shadow-md mx-auto max-w-4xl">
+    <div class="card-body">
+      <h1 class="card-title text-3xl md:text-4xl font-bold mb-4">{{ .Title }}</h1>
+      
+      <div class="flex flex-wrap gap-2 mb-6">
+        <div class="badge badge-outline">{{ .Date.Format "January 2, 2006" }}</div>
+        {{ with .Params.tags }}
+          {{ range . }}
+            <a href="{{ "tags/" | absURL }}{{ . | urlize }}" class="badge badge-primary">{{ . }}</a>
+          {{ end }}
+        {{ end }}
+      </div>
+      
+      <div class="divider"></div>
+      
+      <div class="prose max-w-none">
+        {{ .Content }}
+      </div>
     </div>
-    
-    <div class="mt-8">
-      {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
-    </div>
-  </article>
+  </div>
+</article>
 {{ end }}

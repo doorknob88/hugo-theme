@@ -1,9 +1,12 @@
-<div class="navbar bg-base-200 rounded-box shadow-sm">
-  <div class="flex-1">
-    <a href="/" class="btn btn-ghost text-xl">{{ site.Title }}</a>
+<div class="navbar bg-base-100">
+  <div class="navbar-start">
+    <a href="/" class="btn btn-ghost normal-case text-xl">{{ site.Title }}</a>
   </div>
-  <div class="flex-none">
-    {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+  
+  <div class="navbar-end">
+    <div class="hidden lg:flex mr-4">
+      {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+    </div>
     
     <!-- Theme toggle button -->
     <button id="theme-toggle" class="btn btn-ghost btn-circle">
